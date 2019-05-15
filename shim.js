@@ -15,9 +15,23 @@ process.browser = false
 if (typeof Buffer === 'undefined') global.Buffer = require('buffer').Buffer
 global.self = global;
 global.indexedDB = {};
-global.navigator =  {
-    userAgent: ""
-  };
+
+global.navigator =  undefined;
+window.navigator = undefined;
+
+global.window = global; // We'll allow ourselves to use `window.indexedDB` or `indexedDB` as a global
+
+
+import {decode, encode} from 'base-64';
+import { shimIndexedDB } from 'indexeddbshim/src/IDBFactory';
+
+if (!global.btoa) {
+    global.btoa = encode;
+}
+
+if (!global.atob) {
+    global.atob = decode;
+}
 
   
 // global.location = global.location || { port: 80 }
