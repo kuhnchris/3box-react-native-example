@@ -9,6 +9,7 @@ npm install -g react-native
 Now for some manual steps:
 - Open Android Studio, open the project folder, start virtual machine
 - Open node_modules/libp2p-websockets/src/listeners.js, look for `const createServer = require('pull-ws/server') || noop` and remove the `require('...')` part.
+
 Run:
 ```
 react-native run-android
